@@ -5,12 +5,20 @@ LitElement.
 
 **This project is in very early stage and is far from working today.**
 
-### Objectives of this project
+## Objectives of this project
 
 We aim to build an efficient Markdown editor for Zeste de Savoir, where huge contents are being written. [Some concepts
 were written in French in this pull-request](https://github.com/zestedesavoir/zds-site/pull/5910).
 
-## Setup
+## How to use
+
+_Too early; please come back later._
+
+## How to contribute
+
+This project is governed by [Zeste de Savoir's Code of Conduct](https://github.com/zestedesavoir/zds-site/blob/dev/CODE_OF_CONDUCT.md).
+
+### Setup
 
 Install dependencies and build code in watch mode:
 
@@ -27,7 +35,7 @@ npm run serve
 
 then go to `http://127.0.0.1:8000/dev`.
 
-## Testing
+### Testing
 
 This sample uses Karma, Chai, Mocha, and the open-wc test helpers for testing. See the
 [open-wc testing documentation](https://open-wc.org/testing/testing.html) for more information.
@@ -38,7 +46,7 @@ Tests can be run with the `test` script:
 npm test
 ```
 
-## Linting
+### Linting
 
 To lint the project run:
 
@@ -46,7 +54,7 @@ To lint the project run:
 npm run lint
 ```
 
-## Documentation & demo
+### Documentation & demo
 
 This project includes a simple website generated with the [eleventy](11ty.dev) static site generator and the templates
 and pages in `/docs-src`. The site is generated to `/docs`.
