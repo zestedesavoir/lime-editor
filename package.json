@@ -1,7 +1,7 @@
 {
   "name": "lit-element-starter-ts",
   "version": "0.0.0",
-  "description": "A simple web component",
+  "description": "A web-based Markdown editor, built using CodeMirror 6 and Web Components",
   "main": "lime-editor.js",
   "module": "lime-editor.js",
   "type": "module",
@@ -38,7 +38,7 @@
     "zmarkdown"
   ],
   "author": "Amaury Carrade <amaury@carrade.eu>",
-  "license": "MIT",
+  "license": "BSD 3-Clause License",
   "dependencies": {
     "lit-element": "^2.3.1",
     "@codemirror/commands": "^0.17.0",
