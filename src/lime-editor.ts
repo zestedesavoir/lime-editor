@@ -1,6 +1,6 @@
 import {LitElement, html, customElement, property, css} from 'lit-element'
 
-import { EditorView, ViewUpdate } from "@codemirror/view";
+import { EditorView, ViewUpdate } from "@codemirror/view"
 import {EditorState} from "@codemirror/state"
 
 import limeCodeMirrorSetup from "./codemirror-setup"
@@ -26,9 +26,7 @@ export class LimeEditor extends LitElement {
     }
     
     .lime-editor-original-textarea {
-      visibility: hidden;
-      position: absolute;
-      left: -9999px;
+      display: none;
     }
   `
 

@@ -1,17 +1,17 @@
-import filesize from 'rollup-plugin-filesize';
-import {terser} from 'rollup-plugin-terser';
-import resolve from 'rollup-plugin-node-resolve';
-import replace from '@rollup/plugin-replace';
+import filesize from 'rollup-plugin-filesize'
+import {terser} from 'rollup-plugin-terser'
+import resolve from 'rollup-plugin-node-resolve'
+import replace from '@rollup/plugin-replace'
 
 export default {
-  input: 'lime-editor.js',
+  input: 'dist/lime-editor.js',
   output: {
-    file: 'lime-editor.bundled.js',
+    file: 'dist/lime-editor.bundled.js',
     format: 'esm',
   },
   onwarn(warning) {
     if (warning.code !== 'THIS_IS_UNDEFINED') {
-      console.error(`(!) ${warning.message}`);
+      console.error(`(!) ${warning.message}`)
     }
   },
   plugins: [
@@ -30,4 +30,4 @@ export default {
       showBrotliSize: true,
     }),
   ],
-};
+}

@@ -1,5 +1,5 @@
-const {createDefaultConfig} = require('@open-wc/testing-karma');
-const merge = require('deepmerge');
+const {createDefaultConfig} = require('@open-wc/testing-karma')
+const merge = require('deepmerge')
 
 module.exports = (config) => {
   config.set(
@@ -10,7 +10,7 @@ module.exports = (config) => {
       },
       files: [
         {
-          pattern: config.grep ? config.grep : 'test/**/*_test.js',
+          pattern: config.grep ? config.grep : 'dist/test/**/*_test.js',
           type: 'module',
         },
       ],
@@ -19,6 +19,6 @@ module.exports = (config) => {
         nodeResolve: true,
       },
     })
-  );
-  return config;
-};
+  )
+  return config
+}

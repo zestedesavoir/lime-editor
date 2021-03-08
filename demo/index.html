@@ -4,7 +4,7 @@
   <head>
     <meta charset="utf-8">
     <title>&lt;lime-editor&gt; Demo</title>
-    <script type="module" src="../lime-editor.js"></script>
+    <script type="module" src="../dist/lime-editor.js"></script>
   </head>
   <body>
     <form action="">
@@ -14,5 +14,11 @@
       </lime-editor>
       <input type="submit" value="Envoyer" />
     </form>
+
+    <script>
+      const editorTextarea = document.getElementById("editor")
+      const editorContent = new URL(document.location.href).searchParams.get("editor")
+      setTimeout(() => editorTextarea.value = editorContent, 2000)
+    </script>
   </body>
 </html>

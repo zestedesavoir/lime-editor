@@ -5,14 +5,17 @@ LitElement.
 
 **This project is in very early stage and is far from working today.**
 
+
 ## Objectives of this project
 
 We aim to build an efficient Markdown editor for Zeste de Savoir, where huge contents are being written. [Some concepts
 were written in French in this pull-request](https://github.com/zestedesavoir/zds-site/pull/5910).
 
+
 ## How to use
 
 _Too early; please come back later._
+
 
 ## How to contribute
 
@@ -20,20 +23,14 @@ This project is governed by [Zeste de Savoir's Code of Conduct](https://github.c
 
 ### Setup
 
-Install dependencies and build code in watch mode:
+Install dependencies and run `dev` to build code in watch mode and serve files on a local webserver.
 
 ```bash
 npm i
-npm run build:watch
+npm run dev
 ```
 
-As for now, in another terminal, run:
-
-```bash
-npm run serve
-```
-
-then go to `http://127.0.0.1:8000/dev`.
+Then, go to `http://127.0.0.1:8000/demo`.
 
 ### Testing
 
@@ -52,9 +49,12 @@ To lint the project run:
 
 ```bash
 npm run lint
+
+# or, to auto-fix if possible
+npm run lint:fix
 ```
 
-### Documentation & demo
+### Documentation
 
 This project includes a simple website generated with the [eleventy](11ty.dev) static site generator and the templates
 and pages in `/docs-src`. The site is generated to `/docs`.
@@ -63,16 +63,10 @@ and pages in `/docs-src`. The site is generated to `/docs`.
 npm run docs
 ```
 
-To serve the site locally, run:
+To work on the documentation locally in watch mode, run:
 
 ```bash
-npm run docs:serve
+npm run docs:dev
 ```
 
-To watch the site files, and re-build automatically, run:
-
-```bash
-npm run docs:watch
-```
-
-The site will usually be served at `http://127.0.0.1:8000`.
+The site will usually be served at `http://127.0.0.1:8000` (or 8001 if the port is already used).
