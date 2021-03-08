@@ -7,32 +7,28 @@
       "description": "An example element.",
       "attributes": [
         {
-          "name": "name",
-          "description": "The name to say \"Hello\" to.",
-          "type": "string",
-          "default": "\"World\""
+          "name": "preview-api",
+          "description": "The URL to query for HTML previews. Lime Editor will send POST queries to it.",
+          "type": "null"
         },
         {
-          "name": "count",
-          "description": "The number of times the button has been clicked.",
-          "type": "number",
-          "default": "0"
+          "name": "autosave-key",
+          "description": "A key used to store auto-saved text in the local storage, for users to avoid loosing their work\nin case of browser crash.",
+          "type": "null"
         }
       ],
       "properties": [
         {
-          "name": "name",
-          "attribute": "name",
-          "description": "The name to say \"Hello\" to.",
-          "type": "string",
-          "default": "\"World\""
+          "name": "previewApi",
+          "attribute": "preview-api",
+          "description": "The URL to query for HTML previews. Lime Editor will send POST queries to it.",
+          "type": "null"
         },
         {
-          "name": "count",
-          "attribute": "count",
-          "description": "The number of times the button has been clicked.",
-          "type": "number",
-          "default": "0"
+          "name": "autosaveKey",
+          "attribute": "autosave-key",
+          "description": "A key used to store auto-saved text in the local storage, for users to avoid loosing their work\nin case of browser crash.",
+          "type": "null"
         }
       ],
       "slots": [
