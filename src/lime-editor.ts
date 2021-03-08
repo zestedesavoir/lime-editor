@@ -14,15 +14,10 @@
 
 import {LitElement, html, customElement, property, css} from 'lit-element'
 
-import {EditorView, keymap, highlightSpecialChars, drawSelection} from "@codemirror/view"
-import {EditorState, Prec} from "@codemirror/state"
-import {indentOnInput} from "@codemirror/language"
-import {history, historyKeymap} from "@codemirror/history"
-import {defaultKeymap} from "@codemirror/commands"
-import {searchKeymap, highlightSelectionMatches} from "@codemirror/search"
-import {defaultHighlightStyle} from "@codemirror/highlight"
+import { EditorView, ViewUpdate } from "@codemirror/view";
+import {EditorState} from "@codemirror/state"
 
-import {markdown} from "@codemirror/lang-markdown"
+import limeCodeMirrorSetup from "./codemirror-setup"
 
 
 /**
@@ -39,6 +34,16 @@ export class LimeEditor extends LitElement {
       padding: 16px 0;
       max-width: 800px;
     }
+    
+    .lime-editor-wrapper {
+      position: relative;
+    }
+    
+    .lime-editor-original-textarea {
+      visibility: hidden;
+      position: absolute;
+      left: -9999px;
+    }
   `
 
   /**
@@ -54,14 +59,25 @@ export class LimeEditor extends LitElement {
   @property({type: String, attribute: "autosave-key"})
   autosaveKey = null
 
+  /**
+   * The underlying textarea, part of the form. CodeMirror content is synced with this textarea so
+   * the form get the correct content at the end.
+   * @private
+   */
   private nativeTextarea: HTMLTextAreaElement | null = null
-  private codeMirrorView: EditorView | null = null;
+
+  /**
+   * The CodeMirror view, to control the rich editor.
+   * @private
+   */
+  private codeMirrorView: EditorView | null = null
 
   firstUpdated() {
     const slot = this.shadowRoot?.querySelector('slot')
     if (slot) {
-      this.nativeTextarea = slot.assignedElements({flatten: true})
-            .filter((node) => node.nodeName == 'TEXTAREA')[0] as HTMLTextAreaElement
+      this.nativeTextarea = slot
+        .assignedElements({flatten: true})
+        .filter((node) => node.nodeName == 'TEXTAREA')[0] as HTMLTextAreaElement
     }
 
     if (!this.nativeTextarea) {
@@ -73,26 +89,30 @@ export class LimeEditor extends LitElement {
       state: EditorState.create({
         doc: this.nativeTextarea.value,
         extensions: [
-          highlightSpecialChars(),
-          history(),
-          drawSelection(),
-          EditorState.allowMultipleSelections.of(true),
-          indentOnInput(),
-          Prec.fallback(defaultHighlightStyle),
-          highlightSelectionMatches(),
-          keymap.of([
-            ...defaultKeymap,
-            ...searchKeymap,
-            ...historyKeymap
-          ]),
-          markdown()
+          limeCodeMirrorSetup,
+          EditorView.updateListener.of((v: ViewUpdate) => {
+            if (v.docChanged) {
+              this.nativeTextarea!.value = v.view.state.doc.toString()
+            }
+          })
         ]
       }),
-      parent: this.shadowRoot?.querySelector('.lime-editor-wrapper .lime-editor-cm-root') || undefined,
-      root: this.shadowRoot || undefined
+      parent: this.shadowRoot?.querySelector('.lime-editor-wrapper .lime-editor-cm-root')!,
+      root: this.shadowRoot!
     })
 
-    console.log(this.codeMirrorView)
+    this.nativeTextarea.addEventListener('input', () => {
+      const transaction = this.codeMirrorView?.state.update({
+        changes: {
+          from: 0,
+          to: this.codeMirrorView?.state.doc.length,
+          insert: this.nativeTextarea?.value
+        }
+      })
+      if (transaction) {
+        this.codeMirrorView?.update([transaction])
+      }
+    })
   }
 
   render() {
