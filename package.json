@@ -9,7 +9,7 @@
     "dev": "concurrently --kill-others --raw 'npm run build:watch' 'npm run serve'",
     "build": "tsc",
     "build:watch": "tsc --watch",
-    "clean": "rimraf lime-editor.{d.ts,d.ts.map,js,js.map} test/lime-editor.{d.ts,d.ts.map,js,js.map} test/lime-editor_test.{d.ts,d.ts.map,js,js.map}",
+    "clean": "rimraf dist",
     "lint": "npm run lint:lit-analyzer && npm run lint:eslint",
     "lint:fix": "npm run lint:lit-analyzer && npm run lint:eslint:fix",
     "lint:eslint": "eslint 'src/**/*.ts'",

@@ -1,4 +1,4 @@
-import {LimeEditor} from '../lime-editor.js'
+import {LimeEditorElement} from '../lime-editor-element.js'
 import {fixture, html} from '@open-wc/testing'
 
 const assert = chai.assert
@@ -6,7 +6,7 @@ const assert = chai.assert
 suite('lime-editor', () => {
   test('is defined', () => {
     const el = document.createElement('lime-editor')
-    assert.instanceOf(el, LimeEditor)
+    assert.instanceOf(el, LimeEditorElement)
   })
 
   test('renders with default values', async () => {
@@ -34,7 +34,7 @@ suite('lime-editor', () => {
   })
 
   test('handles a click', async () => {
-    const el = (await fixture(html`<lime-editor></lime-editor>`)) as LimeEditor
+    const el = (await fixture(html`<lime-editor></lime-editor>`)) as LimeEditorElement
     const button = el.shadowRoot!.querySelector('button')!
     button.click()
     await el.updateComplete
