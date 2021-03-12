@@ -1,6 +1,7 @@
-import {LitElement, html, customElement, property, css} from 'lit-element'
+import {LitElement, html, customElement, property, unsafeCSS} from 'lit-element'
 import { LimeEditor } from "./editor/editor"
 
+import styles from "./styles/lime-editor.sass"
 
 /**
  * The lime-editor element.
@@ -9,21 +10,7 @@ import { LimeEditor } from "./editor/editor"
  */
 @customElement('lime-editor')
 export class LimeEditorElement extends LitElement {
-  static styles = css`
-    :host {
-      display: block;
-      padding: 16px 0;
-      max-width: 800px;
-    }
-    
-    .lime-editor-wrapper {
-      position: relative;
-    }
-    
-    .lime-editor-original-textarea {
-      display: none;
-    }
-  `
+  static styles = unsafeCSS(styles)
 
   /**
    * The URL to query for HTML previews. Lime Editor will send POST queries to it.

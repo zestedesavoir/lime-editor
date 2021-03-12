@@ -1,18 +1,18 @@
 <!doctype html>
 
-<html>
+<html lang="en">
   <head>
     <meta charset="utf-8">
     <title>&lt;lime-editor&gt; Demo</title>
-    <script type="module" src="../dist/lime-editor-element.js"></script>
+    <script type="module" src="../dist/lime-editor.bundled.js"></script>
   </head>
   <body>
     <form action="">
-      <label for="editor">Votre contenu en Markdown</label>
+      <label for="editor">Markdown Content</label>
       <lime-editor autosave-key="toaster" id="lime-editor">
         <textarea name="editor" id="editor"># Hello</textarea>
       </lime-editor>
-      <input type="submit" value="Envoyer" />
+      <input type="submit" value="Send" />
     </form>
 
     <script>

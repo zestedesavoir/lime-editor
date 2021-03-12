@@ -21,9 +21,12 @@
       {
         "name": "ts-lit-plugin",
         "strict": true
+      },
+      {
+        "name": "typescript-plugin-css-modules"
       }
     ]
   },
-  "include": ["src/**/*.ts"],
+  "include": ["src/**/*.ts", "src/**/*.sass"],
   "exclude": []
 }

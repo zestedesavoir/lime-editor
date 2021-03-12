@@ -2,9 +2,11 @@ import filesize from 'rollup-plugin-filesize'
 import {terser} from 'rollup-plugin-terser'
 import resolve from 'rollup-plugin-node-resolve'
 import replace from '@rollup/plugin-replace'
+import scss from 'rollup-plugin-scss'
+import typescript from 'rollup-plugin-typescript2'
 
 export default {
-  input: 'dist/lime-editor.js',
+  input: 'src/lime-editor-element.ts',
   output: {
     file: 'dist/lime-editor.bundled.js',
     format: 'esm',
@@ -17,6 +19,16 @@ export default {
   plugins: [
     replace({'Reflect.decorate': 'undefined'}),
     resolve(),
+    scss({
+      output: false,
+      indentedSyntax: true,
+      // Required to be able to load SASS dependencies using @import
+      includePaths: ['node_modules/'],
+      importer(path) {
+        return { file: path[0] !== '~' ? path : path.slice(1) }
+      }
+    }),
+    typescript({ useTsconfigDeclarationDir: true }),
     terser({
       module: true,
       warnings: true,
