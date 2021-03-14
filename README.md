@@ -35,7 +35,7 @@ Then, go to `http://127.0.0.1:8000/demo`.
 ### Testing
 
 This sample uses Karma, Chai, Mocha, and the open-wc test helpers for testing. See the
-[open-wc testing documentation](https://open-wc.org/testing/testing.html) for more information.
+[open-wc testing documentation](https://open-wc.org/docs/testing/testing-package/) for more information.
 
 Tests can be run with the `test` script:
 
